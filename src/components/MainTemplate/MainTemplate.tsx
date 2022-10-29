@@ -1,12 +1,12 @@
-import React from "react";
 import { Outlet } from "react-router-dom";
-import { SearchBar } from "./style";
+import { SearchBar } from "..";
+import { Wrapper } from "./styles";
 
 export const MainTemplate = () => {
   return (
-    <div>
+    <Wrapper>
       <SearchBar />
       <Outlet />
-    </div>
+    </Wrapper>
   );
 };
