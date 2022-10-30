@@ -1,5 +1,5 @@
 import axios from "axios";
-import { IBookResponse } from "../types";
+import { IBookDetails, IBookResponse } from "../types";
 
 class BookStoreApi {
   private readonly BASE_URL = "https://api.itbook.store/1.0/";
@@ -22,11 +22,9 @@ class BookStoreApi {
 
     return data;
   }
-  public async getBook(isbn: string) {
-    const params = {
-      isbn: isbn,
-    };
-    const { data } = await this.API.get("books", { params });
+
+  public async getBook(isbn13: string) {
+    const { data } = await this.API.get<IBookDetails>(`books/${isbn13}`);
 
     return data;
   }

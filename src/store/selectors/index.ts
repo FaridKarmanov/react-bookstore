@@ -1,3 +1,5 @@
 import { getBooks } from "./booksSelector";
 
-export { getBooks };
+import { getBook } from "./bookSelector";
+
+export { getBooks, getBook };

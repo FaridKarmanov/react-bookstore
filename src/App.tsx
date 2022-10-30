@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import { MainTemplate } from "./components";
 import {
   AccountPage,
+  BookPage,
   CartPage,
   FavoritesPage,
   HomePage,
@@ -17,6 +18,7 @@ export const App = () => {
         <Route path="favorites" element={<FavoritesPage />} />
         <Route path="account" element={<AccountPage />} />
         <Route path="cart" element={<CartPage />} />
+        <Route path="book/:isbn13" element={<BookPage />} />
       </Route>
     </Routes>
   );

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { IBook } from "../../types";
 import {
   Book,
@@ -15,13 +16,15 @@ interface IProps {
 export const BookListItem = ({ book }: IProps) => {
   const { isbn13, title, subtitle, image, price } = book;
   return (
-    <Book key={isbn13}>
-      <WrapperImage>
-        <BookImage src={image} />
-      </WrapperImage>
-      <Title> {title}</Title>
-      <Subtitle> {subtitle}</Subtitle>
-      <Price> {price}</Price>
-    </Book>
+    <Link to={`book/${isbn13}`}>
+      <Book>
+        <WrapperImage>
+          <BookImage src={image} />
+        </WrapperImage>
+        <Title> {title}</Title>
+        <Subtitle> {subtitle}</Subtitle>
+        <Price> {price}</Price>
+      </Book>
+    </Link>
   );
 };
