@@ -3,5 +3,17 @@ import { ReactComponent as CartIcon } from "./icons/cart-icon.svg";
 import { ReactComponent as AccountIcon } from "./icons/user-icon.svg";
 import { ReactComponent as FavoritesIcon } from "./icons/favorites-icon.svg";
 import { ReactComponent as ArrowHomeIcon } from "./icons/arrow-left-icon.svg";
+import { ReactComponent as MinusIcon } from "./icons/minus-icon.svg";
+import { ReactComponent as PlusIcon } from "./icons/plus-icon.svg";
+import { ReactComponent as DeleteIcon } from "./icons/delete-icon.svg";
 
-export { LogoIcon, CartIcon, AccountIcon, FavoritesIcon, ArrowHomeIcon };
+export {
+  LogoIcon,
+  CartIcon,
+  AccountIcon,
+  FavoritesIcon,
+  ArrowHomeIcon,
+  MinusIcon,
+  PlusIcon,
+  DeleteIcon,
+};

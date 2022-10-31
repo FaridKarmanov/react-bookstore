@@ -57,7 +57,89 @@ export const Price = styled.p`
   text-align: left;
 `;
 
-export const Description = styled.h2`
+export const Paragraph = styled.p`
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const ButtonAddToCart = styled.button`
+  width: 100%;
+  margin-top: 49px;
+  padding: 18px 172px;
+  background: ${Color.Primary};
+  color: ${Color.White};
+  text-transform: uppercase;
+  cursor: pointer;
+`;
+
+export const Preview = styled.a`
+  font-family: Helios;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0px;
+  text-align: center;
+  text-decoration: none;
+  color: ${Color.Primary};
+  margin-top: 40px;
+`;
+
+export const FirstName = styled.span`
+  font-family: Helios;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 32px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: ${Color.Secondary};
+`;
+export const SecondName = styled.span`
+  font-family: Helios;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 32px;
+  letter-spacing: 0em;
+  text-align: right;
+  color: ${Color.Primary};
+`;
+
+export const ResumeContainer = styled.p`
+  margin-top: 72px;
+  border-bottom: 1px solid ${Color.Gray};
+`;
+
+export const ButtonAuthor = styled.button<{ $isActive: boolean }>`
+  padding: 0px 40px 24px;
+  font-family: Helios;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0px;
+  text-align: left;
+  border: none;
+  border-bottom: ${({ $isActive }) =>
+    $isActive ? "none" : `1px solid ${Color.Primary} `};
+  background: none;
+  cursor: pointer;
+`;
+
+export const ButtonDescription = styled.button<{ $isActive: boolean }>`
+  padding: 0px 40px 24px;
+  font-family: Helios;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0px;
+  text-align: left;
+  border: none;
+  border-bottom: ${({ $isActive }) =>
+    $isActive ? `1px solid ${Color.Primary} ` : "none"};
+  background: none;
+  cursor: pointer;
+`;
+
+export const Definition = styled.p`
+  margin-top: 49px;
   font-family: Helios;
   font-size: 16px;
   font-weight: 400;
@@ -66,7 +148,3 @@ export const Description = styled.h2`
   text-align: left;
   color: ${Color.Primary};
 `;
-
-export const FooterContainer = styled.p``;
-
-export const Button = styled.button``;

@@ -1,16 +1,17 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { ArrowHomeIcon } from "../../assets";
-import { useToggle } from "../../hooks";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { getBook } from "../../store/selectors";
+import { addToCart } from "../../store/slices";
 import { fetchBook } from "../../store/slices/bookSlice";
 import { IBookDetails } from "../../types";
 import {
   BookImage,
-  Button,
-  Description,
-  FooterContainer,
+  ButtonDescription,
+  ButtonAuthor,
+  Paragraph,
+  ResumeContainer,
   ImageContainer,
   InformationContainer,
   Price,
@@ -18,12 +19,17 @@ import {
   TitleContainer,
   Wrapper,
   WrapperImage,
+  FirstName,
+  SecondName,
+  Definition,
+  ButtonAddToCart,
+  Preview,
 } from "./styles";
 
 export const BookCard = () => {
   const { isbn13 = "" } = useParams();
   const dispatch = useAppDispatch();
-  const [toggle, state] = useToggle();
+  const [state, setState] = useState<boolean>(true);
 
   useEffect(() => {
     dispatch(fetchBook(isbn13));
@@ -31,11 +37,11 @@ export const BookCard = () => {
 
   const { book } = useAppSelector(getBook);
 
-  const { title, authors, publisher, pages, year, desc, price, image } =
+  const { title, authors, publisher, pages, year, desc, price, image, pdf } =
     book || ({} as IBookDetails);
 
   return (
-    <Wrapper>
+    <Wrapper id={isbn13}>
       <TitleContainer>
         <Link to="/">
           <ArrowHomeIcon />
@@ -48,18 +54,42 @@ export const BookCard = () => {
         </WrapperImage>
         <InformationContainer>
           <Price>{price}</Price>
-          <Description>Author {authors}</Description>
-          <Description>Publisher {publisher}</Description>
-          <Description>Year {year}</Description>
-          <Description>Pages {pages}</Description>
+          <Paragraph>
+            <FirstName>Author</FirstName> <SecondName>{authors}</SecondName>
+          </Paragraph>
+          <Paragraph>
+            <FirstName>Publisher</FirstName>
+            <SecondName>{publisher}</SecondName>
+          </Paragraph>
+          <Paragraph>
+            <FirstName>Year</FirstName> <SecondName>{year}</SecondName>
+          </Paragraph>
+          <Paragraph>
+            <FirstName>Pages</FirstName> <SecondName>{pages}</SecondName>
+          </Paragraph>
+          <ButtonAddToCart
+            onClick={() => {
+              if (book) dispatch(addToCart(book));
+            }}
+          >
+            add to cart
+          </ButtonAddToCart>
+          {pdf && <Preview href={Object.values(pdf)[0]}>Preview book</Preview>}
         </InformationContainer>
       </ImageContainer>
-      <FooterContainer>
-        <Button onClick={() => state()}>Description</Button>
-        <Button onClick={() => state()}>Author</Button>
-
-        {toggle ? <div>{authors}</div> : <div>{desc}</div>}
-      </FooterContainer>
+      <ResumeContainer>
+        <ButtonDescription $isActive={state} onClick={() => setState(true)}>
+          Description
+        </ButtonDescription>
+        <ButtonAuthor $isActive={state} onClick={() => setState(false)}>
+          Author
+        </ButtonAuthor>
+      </ResumeContainer>
+      {state ? (
+        <Definition>{desc}</Definition>
+      ) : (
+        <Definition>{authors}</Definition>
+      )}
     </Wrapper>
   );
 };
