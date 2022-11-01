@@ -34,7 +34,7 @@ const cartSlice = createSlice({
       }
     },
     removeFromCart: (state, { payload }: PayloadAction<string>) => {
-      state.cart.map((book) => {
+      state.cart.forEach((book) => {
         if (book.isbn13 === payload) {
           state.total -= book.quantity * +book.price.slice(1, 6);
         }
@@ -43,7 +43,7 @@ const cartSlice = createSlice({
     },
 
     increaseQuantity: (state, { payload }: PayloadAction<string>) => {
-      state.cart.map((book) => {
+      state.cart.forEach((book) => {
         if (book.isbn13 === payload) {
           book.quantity += 1;
           state.total += +book.price.slice(1, 6);
@@ -52,10 +52,9 @@ const cartSlice = createSlice({
     },
 
     decreaseQuantity: (state, { payload }: PayloadAction<string>) => {
-      state.cart.map((book) => {
+      state.cart.forEach((book) => {
         if (book.isbn13 === payload && book.quantity === 1) {
-          book.quantity -= 0;
-          state.total -= 0;
+          state.cart = state.cart.filter((book) => book.isbn13 !== payload);
         } else if (book.isbn13 === payload) {
           book.quantity -= 1;
           state.total -= +book.price.slice(1, 6);
