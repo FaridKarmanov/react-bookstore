@@ -6,6 +6,8 @@ import { ReactComponent as ArrowHomeIcon } from "./icons/arrow-left-icon.svg";
 import { ReactComponent as MinusIcon } from "./icons/minus-icon.svg";
 import { ReactComponent as PlusIcon } from "./icons/plus-icon.svg";
 import { ReactComponent as DeleteIcon } from "./icons/delete-icon.svg";
+import { ReactComponent as HeartEmptyIcon } from "./icons/heart-empty-icon.svg";
+import { ReactComponent as HeartFillIcon } from "./icons/heart-fill-icon.svg";
 
 export {
   LogoIcon,
@@ -16,4 +18,6 @@ export {
   MinusIcon,
   PlusIcon,
   DeleteIcon,
+  HeartEmptyIcon,
+  HeartFillIcon,
 };

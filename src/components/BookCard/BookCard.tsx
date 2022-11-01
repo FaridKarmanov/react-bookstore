@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { ArrowHomeIcon } from "../../assets";
+import { ArrowHomeIcon, HeartEmptyIcon } from "../../assets";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { getBook } from "../../store/selectors";
-import { addToCart } from "../../store/slices";
-import { fetchBook } from "../../store/slices/bookSlice";
+import { addToCart, addToFavorites, fetchBook } from "../../store/slices";
 import { IBookDetails } from "../../types";
 import {
   BookImage,
@@ -24,6 +23,7 @@ import {
   Definition,
   ButtonAddToCart,
   Preview,
+  FavoritesContainer,
 } from "./styles";
 
 export const BookCard = () => {
@@ -51,9 +51,19 @@ export const BookCard = () => {
       <ImageContainer>
         <WrapperImage>
           <BookImage src={image} />
+          <FavoritesContainer>
+            <HeartEmptyIcon
+              style={{ cursor: "pointer" }}
+              onClick={() => {
+                if (book) {
+                  dispatch(addToFavorites(book));
+                }
+              }}
+            />
+          </FavoritesContainer>
         </WrapperImage>
         <InformationContainer>
-          <Price>{price}</Price>
+          <Price>{"$0.00" === price ? "For free" : price}</Price>
           <Paragraph>
             <FirstName>Author</FirstName> <SecondName>{authors}</SecondName>
           </Paragraph>

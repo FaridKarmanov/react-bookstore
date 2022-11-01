@@ -28,9 +28,9 @@ export const ImageContainer = styled.div`
 `;
 
 export const WrapperImage = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  grid-template-rows: 56px;
+  grid-template-areas: ". favorites";
   max-width: 544px;
   width: 100%;
   height: 472px;
@@ -38,7 +38,19 @@ export const WrapperImage = styled.div`
 `;
 
 export const BookImage = styled.img`
+  margin: 60px 122px;
   object-fit: cover;
+`;
+
+export const FavoritesContainer = styled.div`
+  grid-area: "favorites";
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 56px;
+  width: 56px;
+  background: ${Color.Primary};
 `;
 
 export const InformationContainer = styled.div`

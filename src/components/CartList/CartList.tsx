@@ -1,7 +1,6 @@
-import React from "react";
+import { CartItem } from "..";
 import { useAppSelector } from "../../store/hooks";
 import { getCart } from "../../store/selectors";
-import { CartItem } from "../CartItem/CartItem";
 import { List } from "./styles";
 
 export const CartList = () => {

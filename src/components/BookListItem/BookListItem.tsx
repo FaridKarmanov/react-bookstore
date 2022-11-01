@@ -23,7 +23,7 @@ export const BookListItem = ({ book }: IProps) => {
         </WrapperImage>
         <Title> {title}</Title>
         <Subtitle> {subtitle}</Subtitle>
-        <Price> {price}</Price>
+        <Price>{"$0.00" === price ? "For free" : price} </Price>
       </Book>
     </Link>
   );

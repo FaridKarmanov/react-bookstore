@@ -32,15 +32,15 @@ export const CartPage = () => {
       <TotalContainer>
         <Paragraph>
           <FirstName>Sum total</FirstName>
-          <SecondName>${total.toFixed(2)}</SecondName>
+          <SecondName>${Math.abs(+total.toFixed(2))}</SecondName>
         </Paragraph>
         <Paragraph>
           <FirstName>VAT</FirstName>
-          <SecondName>${vat.toFixed(2)}</SecondName>
+          <SecondName>${Math.abs(+vat.toFixed(2))}</SecondName>
         </Paragraph>
         <Paragraph>
           <Total>Total:</Total>
-          <Total>${bill.toFixed(2)} </Total>
+          <Total>${Math.abs(+bill.toFixed(2))} </Total>
         </Paragraph>
         <Button>check out</Button>
       </TotalContainer>

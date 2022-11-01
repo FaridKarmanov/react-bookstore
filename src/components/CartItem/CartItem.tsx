@@ -32,7 +32,6 @@ export const CartItem = ({ book }: IProps) => {
       <WrapperImage>
         <BookImage src={image} />
       </WrapperImage>
-
       <Description>
         <Title>{title}</Title>
         <Subtitle>
@@ -50,7 +49,9 @@ export const CartItem = ({ book }: IProps) => {
           />
         </ButtonContainer>
       </Description>
-      <Price>${totalPrice.toFixed(2)}</Price>
+      <Price>
+        {"$0.00" === price ? "For free" : `$${totalPrice.toFixed(2)}`}
+      </Price>
       <DeleteIcon
         style={{ cursor: "pointer" }}
         onClick={() => dispatch(removeFromCart(isbn13))}
