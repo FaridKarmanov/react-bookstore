@@ -66,7 +66,7 @@ export const ButtonContainer = styled.div`
 export const Price = styled.p`
   color: ${Color.Primary};
   font-family: Bebas Neue;
-  font-size: 24px;
+  font-size: 16px;
   font-weight: 700;
   line-height: 32px;
   letter-spacing: 0em;

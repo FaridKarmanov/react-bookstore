@@ -21,7 +21,7 @@ export const BookListItem = ({ book }: IProps) => {
         <WrapperImage>
           <BookImage src={image} />
         </WrapperImage>
-        <Title> {title}</Title>
+        <Title> {title.length > 30 ? title.slice(0, 27) + "..." : title}</Title>
         <Subtitle> {subtitle}</Subtitle>
         <Price>{"$0.00" === price ? "For free" : price} </Price>
       </Book>
