@@ -11,40 +11,45 @@ export const TitleContainer = styled.div`
   flex-direction: column;
 `;
 
-export const Title = styled.h2`
-  margin-top: 37px;
-  font-family: Bebas Neue;
-  font-size: 56px;
-  font-weight: 700;
-  line-height: 64px;
-  letter-spacing: 0em;
-  text-align: left;
-`;
-
 export const ImageContainer = styled.div`
   display: flex;
-  justify-content: space-between;
-  margin-top: 48px;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-top: 36px;
+
+  @media screen and (min-width: 1048px) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
 `;
 
 export const WrapperImage = styled.div`
-  display: grid;
-  grid-template-rows: 56px;
-  grid-template-areas: ". favorites";
-  max-width: 544px;
-  width: 100%;
-  height: 472px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
   background-color: ${Color.Orange};
+  max-width: 688px;
+  width: 100%;
+
+  @media screen and (min-width: 1048px) {
+    max-width: 544px;
+  }
 `;
 
 export const BookImage = styled.img`
-  margin: 60px 122px;
+  width: 150px;
+  height: 175px;
+  margin: 0 auto;
   object-fit: cover;
+
+  @media screen and (min-width: 540px) {
+    width: 300px;
+    height: 350px;
+  }
 `;
 
 export const FavoritesContainer = styled.div`
-  grid-area: "favorites";
-  justify-self: end;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -52,12 +57,15 @@ export const FavoritesContainer = styled.div`
   width: 56px;
   background: ${Color.Primary};
 `;
-
 export const InformationContainer = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: 448px;
+  max-width: 688px;
   width: 100%;
+
+  @media screen and (min-width: 1048px) {
+    max-width: 448px;
+  }
 `;
 
 export const Price = styled.p`
@@ -69,15 +77,10 @@ export const Price = styled.p`
   text-align: left;
 `;
 
-export const Paragraph = styled.p`
-  display: flex;
-  justify-content: space-between;
-`;
-
 export const ButtonAddToCart = styled.button`
   width: 100%;
   margin-top: 49px;
-  padding: 18px 172px;
+  padding: 18px 83px;
   background: ${Color.Primary};
   color: ${Color.White};
   text-transform: uppercase;
@@ -94,6 +97,11 @@ export const Preview = styled.a`
   text-decoration: none;
   color: ${Color.Primary};
   margin-top: 40px;
+`;
+
+export const Paragraph = styled.p`
+  display: flex;
+  justify-content: space-between;
 `;
 
 export const FirstName = styled.span`
@@ -116,6 +124,9 @@ export const SecondName = styled.span`
 `;
 
 export const ResumeContainer = styled.p`
+  display: flex;
+  align-items: center;
+  width: 100%;
   margin-top: 72px;
   border-bottom: 1px solid ${Color.Gray};
 `;

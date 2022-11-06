@@ -3,39 +3,64 @@ import { Color } from "../../ui";
 
 export const Item = styled.li`
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: space-between;
-  padding-bottom: 49px;
   margin-bottom: 48px;
-  width: 100%;
-  height: 242px;
-  border-bottom: 1px solid ${Color.Secondary};
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+    padding-bottom: 49px;
+    width: 100%;
+    border-bottom: 1px solid ${Color.Secondary};
+  }
 `;
 
 export const WrapperImage = styled.div`
   display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  max-width: 272px;
+  width: 100%;
+  margin-bottom: 20px;
+  background-color: ${Color.Blue};
+
+  @media screen and (min-width: 768px) {
+    max-width: 256px;
+    margin-bottom: 0;
+  }
+`;
+
+export const FavoritesContainer = styled.div`
+  display: flex;
   align-items: center;
   justify-content: center;
-  background-color: ${Color.Blue};
-  max-width: 256px;
-  width: 100%;
-  height: 192px;
+  height: 56px;
+  width: 56px;
+  background: ${Color.Primary};
 `;
 
 export const BookImage = styled.img`
-  width: 163px;
-  height: 191px;
+  width: 150px;
+  height: 175px;
+  margin: 0 auto;
   object-fit: cover;
 `;
 
 export const Description = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: 446px;
+  align-items: center;
+  max-width: 272px;
   width: 100%;
-  text-align: left;
+
+  @media screen and (min-width: 768px) {
+    align-items: flex-start;
+  }
 `;
 
 export const Title = styled.h2`
+  margin-bottom: 8px;
   font-family: Bebas Neue;
   font-size: 24px;
   font-weight: 700;
@@ -46,6 +71,7 @@ export const Title = styled.h2`
 `;
 
 export const Subtitle = styled.h3`
+  margin-bottom: 24px;
   font-family: Helios;
   font-size: 16px;
   font-weight: 400;

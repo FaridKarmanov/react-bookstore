@@ -1,13 +1,13 @@
+import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-import { Button, Form, Input, Title } from "./styles";
+import { Button, Form, Header, Input, Title } from "./styles";
 
 type FormValues = {
   email: string;
-  password: string;
 };
 
-export const SignIn = () => {
+export const Reset = () => {
   const { register, handleSubmit } = useForm<FormValues>();
   const onSubmit: SubmitHandler<FormValues> = (data) => {
     console.log(data);
@@ -15,12 +15,11 @@ export const SignIn = () => {
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
+      <Header>Reset password</Header>
       <Title>Email</Title>
       <Input placeholder="Your email" {...register("email")} />
-      <Title>Password</Title>
-      <Input placeholder="Your password" {...register("password")} />
-      <Link to="/reset">Forgot password?</Link>
-      <Button type="submit">sign in</Button>
+      <Link to="/sign-in">Sign In</Link>
+      <Button type="submit">Reset</Button>
     </Form>
   );
 };

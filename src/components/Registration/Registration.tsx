@@ -1,5 +1,5 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import { Button, FormContainer, SwitchContainer, Wrapper } from "./styles";
 
 export const Registration = () => {
@@ -7,11 +7,15 @@ export const Registration = () => {
     <Wrapper>
       <FormContainer>
         <SwitchContainer>
-          <Button>Sign In</Button>
-          <Button>Sign Up</Button>
+          <Link to="sign-in">
+            <Button>Sign In</Button>
+          </Link>
+          <Link to="sign-up">
+            <Button>Sign Up</Button>
+          </Link>
         </SwitchContainer>
+        <Outlet />
       </FormContainer>
-      <Outlet />
     </Wrapper>
   );
 };

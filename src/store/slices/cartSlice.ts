@@ -55,6 +55,7 @@ const cartSlice = createSlice({
       state.cart.forEach((book) => {
         if (book.isbn13 === payload && book.quantity === 1) {
           state.cart = state.cart.filter((book) => book.isbn13 !== payload);
+          state.total -= +book.price.slice(1, 6);
         } else if (book.isbn13 === payload) {
           book.quantity -= 1;
           state.total -= +book.price.slice(1, 6);

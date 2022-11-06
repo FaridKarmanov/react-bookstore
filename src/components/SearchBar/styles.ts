@@ -1,12 +1,16 @@
 import styled from "styled-components";
+import { Color } from "../../ui";
 
 export const Wrapper = styled.div`
+  position: sticky;
+  top: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
   padding: 24px 0px;
   margin-bottom: 72px;
+  background: ${Color.White};
 `;
 
 export const Search = styled.input`
@@ -17,6 +21,11 @@ export const Search = styled.input`
 
 export const UserIcons = styled.div`
   display: flex;
-  max-width: 184px;
+  justify-content: flex-end;
+  max-width: 112px;
   width: 100%;
+
+  @media screen and (min-width: 1024px) {
+    max-width: 168px;
+  }
 `;

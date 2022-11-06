@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Color } from "../../ui";
 
 export const Wrapper = styled.div`
   display: grid;
@@ -10,13 +11,13 @@ export const TitleContainer = styled.div`
   flex-direction: column;
 `;
 
-export const Title = styled.h2`
-  margin-top: 37px;
-  font-family: Bebas Neue;
-  font-size: 56px;
-  font-weight: 700;
-  line-height: 64px;
+export const EmptyFavorites = styled.h2`
+  margin-top: 200px;
+  font-family: Helios;
+  font-size: 64px;
+  font-weight: 400;
+  line-height: 32px;
   letter-spacing: 0em;
-  text-align: left;
-  text-transform: uppercase;
+  text-align: center;
+  color: ${Color.Primary};
 `;

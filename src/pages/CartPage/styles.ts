@@ -4,22 +4,12 @@ import { Color } from "../../ui";
 export const Wrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr;
+  padding-bottom: 39px;
 `;
 
 export const TitleContainer = styled.div`
   display: flex;
   flex-direction: column;
-`;
-
-export const Title = styled.h2`
-  margin-top: 37px;
-  font-family: Bebas Neue;
-  font-size: 56px;
-  font-weight: 700;
-  line-height: 64px;
-  letter-spacing: 0em;
-  text-align: left;
-  text-transform: uppercase;
 `;
 
 export const TotalContainer = styled.div`
@@ -70,4 +60,15 @@ export const Button = styled.button`
   color: ${Color.White};
   text-transform: uppercase;
   cursor: pointer;
+`;
+
+export const EmptyCart = styled.h2`
+  margin-top: 200px;
+  font-family: Helios;
+  font-size: 64px;
+  font-weight: 400;
+  line-height: 32px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: ${Color.Primary};
 `;

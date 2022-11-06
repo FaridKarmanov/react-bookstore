@@ -1,8 +1,8 @@
 import { useEffect } from "react";
-import { BookList } from "../../components";
+import { BookList, TitlePage } from "../../components";
 import { useAppDispatch } from "../../store/hooks";
 import { fetchBooks } from "../../store/slices";
-import { Title, Wrapper } from "./styles";
+import { Wrapper } from "./styles";
 
 export const HomePage = () => {
   const dispatch = useAppDispatch();
@@ -12,7 +12,7 @@ export const HomePage = () => {
 
   return (
     <Wrapper>
-      <Title>New Releases Books</Title>
+      <TitlePage>New Releases Books</TitlePage>
       <BookList />
     </Wrapper>
   );

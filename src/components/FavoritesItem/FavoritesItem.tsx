@@ -1,10 +1,12 @@
-import { HeartFillIcon } from "../../assets";
+import { HeartFillIcon, MobileFavoritesIcon } from "../../assets";
+import { useWindowSize } from "../../hooks";
 import { useAppDispatch } from "../../store/hooks";
 import { removeFromFavorite } from "../../store/slices";
 import { IBookDetails } from "../../types";
 import {
   BookImage,
   Description,
+  FavoritesContainer,
   Item,
   Price,
   Subtitle,
@@ -19,10 +21,25 @@ interface IProps {
 export const FavoritesItem = ({ book }: IProps) => {
   const { title, authors, publisher, isbn13, price, image } = book;
   const dispatch = useAppDispatch();
+  const { width = 0 } = useWindowSize();
 
   return (
     <Item>
       <WrapperImage>
+        {width >= 768 ? (
+          <></>
+        ) : (
+          <FavoritesContainer>
+            <MobileFavoritesIcon
+              style={{ cursor: "pointer" }}
+              onClick={() => {
+                if (book) {
+                  dispatch(removeFromFavorite(isbn13));
+                }
+              }}
+            />
+          </FavoritesContainer>
+        )}
         <BookImage src={image} />
       </WrapperImage>
 
@@ -31,12 +48,16 @@ export const FavoritesItem = ({ book }: IProps) => {
         <Subtitle>
           {authors}, {publisher}
         </Subtitle>
+        <Price>{"$0.00" === price ? "For free" : `${price}`}</Price>
       </Description>
-      <Price>{"$0.00" === price ? "For free" : `${price}`}</Price>
-      <HeartFillIcon
-        style={{ cursor: "pointer" }}
-        onClick={() => dispatch(removeFromFavorite(isbn13))}
-      />
+      {width >= 768 ? (
+        <HeartFillIcon
+          style={{ cursor: "pointer" }}
+          onClick={() => dispatch(removeFromFavorite(isbn13))}
+        />
+      ) : (
+        <></>
+      )}
     </Item>
   );
 };

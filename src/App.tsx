@@ -1,13 +1,15 @@
 import { Route, Routes } from "react-router-dom";
-import { MainTemplate, Registration, RequareAuth, SignUp } from "./components";
+import { MainTemplate, Registration, RequareAuth } from "./components";
 import {
   AccountPage,
-  SignIn,
+  SignInPage,
   BookPage,
   CartPage,
   FavoritesPage,
   HomePage,
   SearchPage,
+  SignUpPage,
+  ResetPage,
 } from "./pages";
 
 export const App = () => {
@@ -19,9 +21,10 @@ export const App = () => {
         <Route path="search" element={<SearchPage />} />
 
         <Route element={<Registration />}>
-          <Route path="sign-up" element={<SignUp />} />
-          <Route path="sign-in" element={<SignIn />} />
+          <Route path="sign-up" element={<SignUpPage />} />
+          <Route path="sign-in" element={<SignInPage />} />
         </Route>
+        <Route path="reset" element={<ResetPage />} />
 
         <Route element={<RequareAuth />}>
           <Route path="favorites" element={<FavoritesPage />} />

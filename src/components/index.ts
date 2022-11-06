@@ -11,6 +11,9 @@ import { SignIn } from "./SignIn/SignIn";
 import { SignUp } from "./SignUp/SignUp";
 import { RequareAuth } from "./RequareAuth/RequareAuth";
 import { Registration } from "./Registration/Registration";
+import { TitlePage } from "./TitlePage/TitlePage";
+import { BurgerMenu } from "./BurgerMenu/BurgerMenu";
+import { Reset } from "./Reset/Reset";
 
 export {
   MainTemplate,
@@ -26,4 +29,7 @@ export {
   SignUp,
   RequareAuth,
   Registration,
+  TitlePage,
+  BurgerMenu,
+  Reset,
 };

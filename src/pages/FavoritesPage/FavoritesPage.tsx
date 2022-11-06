@@ -1,19 +1,26 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import { ArrowHomeIcon } from "../../assets";
-import { FavoritesList } from "../../components";
-import { Title, TitleContainer, Wrapper } from "./styles";
+import { FavoritesList, TitlePage } from "../../components";
+import { useAppSelector } from "../../store/hooks";
+import { getFavorites } from "../../store/selectors";
+import { EmptyFavorites, TitleContainer, Wrapper } from "./styles";
 
 export const FavoritesPage = () => {
+  const { favorites } = useAppSelector(getFavorites);
+
   return (
     <Wrapper>
       <TitleContainer>
         <Link to="/">
           <ArrowHomeIcon />
         </Link>
-        <Title>Favorites</Title>
+        <TitlePage>Favorites</TitlePage>
       </TitleContainer>
-      <FavoritesList />
+      {favorites.length === 0 ? (
+        <EmptyFavorites>Nothing in favorites</EmptyFavorites>
+      ) : (
+        <FavoritesList />
+      )}
     </Wrapper>
   );
 };
