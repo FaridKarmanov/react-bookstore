@@ -3,6 +3,7 @@ import booksReducer from "./slices/booksSlice";
 import bookReducer from "./slices/bookSlice";
 import cartReducer from "./slices/cartSlice";
 import favoritesReducer from "./slices/favoritesSlice";
+import userReducer from "./slices/userSlice";
 
 export const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
     book: bookReducer,
     cart: cartReducer,
     favorites: favoritesReducer,
+    user: userReducer,
   },
 });
 

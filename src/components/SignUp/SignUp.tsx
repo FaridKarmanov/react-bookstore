@@ -1,3 +1,4 @@
+import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Button, Form, Input, Title } from "./styles";
 
@@ -9,8 +10,19 @@ type FormValues = {
 
 export const SignUp = () => {
   const { register, handleSubmit } = useForm<FormValues>();
-  const onSubmit: SubmitHandler<FormValues> = (data) => {
-    console.log(data);
+  const onSubmit: SubmitHandler<FormValues> = ({ email, password }) => {
+    const auth = getAuth();
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // ..
+      });
   };
 
   return (

@@ -1,14 +1,14 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IBookCart, IBookDetails } from "../../types";
 
-interface BooksState {
+interface CartState {
   cart: IBookCart[];
   total: number;
   isLoading: boolean;
   error: null | string;
 }
 
-const initialState: BooksState = {
+const initialState: CartState = {
   cart: [],
   total: 0,
   isLoading: false,

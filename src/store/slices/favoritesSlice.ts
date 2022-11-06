@@ -1,11 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IBookDetails } from "../../types";
 
-interface BooksState {
+interface FavoriteState {
   favorites: IBookDetails[];
 }
 
-const initialState: BooksState = {
+const initialState: FavoriteState = {
   favorites: [],
 };
 
