@@ -14,6 +14,8 @@ import { Registration } from "./Registration/Registration";
 import { TitlePage } from "./TitlePage/TitlePage";
 import { BurgerMenu } from "./BurgerMenu/BurgerMenu";
 import { Reset } from "./Reset/Reset";
+import { StyledLink } from "./StyledLink/StyledLink";
+import { LoadingSpinner } from "./LoadingSpinner/LoadingSpinner";
 
 export {
   MainTemplate,
@@ -32,4 +34,6 @@ export {
   TitlePage,
   BurgerMenu,
   Reset,
+  StyledLink,
+  LoadingSpinner,
 };

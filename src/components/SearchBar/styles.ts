@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
   justify-content: space-between;
   width: 100%;
   padding: 24px 0px;
-  margin-bottom: 72px;
+  margin-bottom: 36px;
   background: ${Color.White};
 `;
 

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { TitlePage } from "..";
 import {
   ArrowHomeIcon,
@@ -7,7 +7,7 @@ import {
   MobileFavoritesIcon,
 } from "../../assets";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import { getBook, getCart, getFavorites } from "../../store/selectors";
+import { getBook, getCart, getFavorites, getUser } from "../../store/selectors";
 import {
   addToCart,
   addToFavorites,
@@ -39,7 +39,9 @@ export const BookCard = () => {
   const { isbn13 = "" } = useParams();
   const { favorites } = useAppSelector(getFavorites);
   const { cart } = useAppSelector(getCart);
+  const { isAuth } = useAppSelector(getUser);
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const [state, setState] = useState<boolean>(true);
 
   const inFavorites = () => {
@@ -75,27 +77,32 @@ export const BookCard = () => {
       </TitleContainer>
       <ImageContainer>
         <WrapperImage>
-          <FavoritesContainer>
-            {inFavorites() ? (
-              <MobileFavoritesIcon
-                style={{ cursor: "pointer" }}
-                onClick={() => {
-                  if (book) {
-                    dispatch(removeFromFavorite(isbn13));
-                  }
-                }}
-              />
-            ) : (
-              <HeartEmptyIcon
-                style={{ cursor: "pointer" }}
-                onClick={() => {
-                  if (book) {
-                    dispatch(addToFavorites(book));
-                  }
-                }}
-              />
-            )}
-          </FavoritesContainer>
+          {isAuth ? (
+            <FavoritesContainer>
+              {inFavorites() ? (
+                <MobileFavoritesIcon
+                  style={{ cursor: "pointer" }}
+                  onClick={() => {
+                    if (book) {
+                      dispatch(removeFromFavorite(isbn13));
+                    }
+                  }}
+                />
+              ) : (
+                <HeartEmptyIcon
+                  style={{ cursor: "pointer" }}
+                  onClick={() => {
+                    if (book) {
+                      dispatch(addToFavorites(book));
+                    }
+                  }}
+                />
+              )}
+            </FavoritesContainer>
+          ) : (
+            <></>
+          )}
+
           <BookImage src={image} />
         </WrapperImage>
         <InformationContainer>
@@ -113,13 +120,25 @@ export const BookCard = () => {
           <Paragraph>
             <FirstName>Pages</FirstName> <SecondName>{pages}</SecondName>
           </Paragraph>
-          <ButtonAddToCart
-            onClick={() => {
-              if (book) dispatch(addToCart(book));
-            }}
-          >
-            {inCart() ? "Book in cart" : "add to cart"}
-          </ButtonAddToCart>
+
+          {isAuth ? (
+            <ButtonAddToCart
+              onClick={() => {
+                if (book) dispatch(addToCart(book));
+              }}
+            >
+              {inCart() ? "Book in cart" : "add to cart"}
+            </ButtonAddToCart>
+          ) : (
+            <ButtonAddToCart
+              onClick={() => {
+                navigate("/sign-in");
+              }}
+            >
+              Need sign in for add to Favorites
+            </ButtonAddToCart>
+          )}
+
           {pdf && <Preview href={Object.values(pdf)[0]}>Preview book</Preview>}
         </InformationContainer>
       </ImageContainer>

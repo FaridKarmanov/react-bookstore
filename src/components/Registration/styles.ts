@@ -16,20 +16,22 @@ export const FormContainer = styled.div`
 
 export const SwitchContainer = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  width: 100%;
   height: 54px;
-  padding: 0 33px;
-  /* border-bottom: 1px solid ${Color.Secondary}; */
+  padding: 0 20px;
 `;
 
 export const Button = styled.button`
-  max-width: 239px;
   width: 100%;
   height: 54px;
+  font-family: Exo 2;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0em;
   text-align: center;
   border: none;
-  /* border-bottom: 1px solid ${Color.Secondary}; */
   color: ${Color.Primary};
   background-color: ${Color.White};
   cursor: pointer;

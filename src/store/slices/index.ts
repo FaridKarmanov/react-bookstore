@@ -10,6 +10,8 @@ import {
 
 import { addToFavorites, removeFromFavorite } from "./favoritesSlice";
 
+import { fetchSignUp, fetchSignIn } from "./userSlice";
+
 export {
   fetchBooks,
   addToCart,
@@ -19,4 +21,6 @@ export {
   fetchBook,
   addToFavorites,
   removeFromFavorite,
+  fetchSignUp,
+  fetchSignIn,
 };

@@ -1,5 +1,6 @@
 import React from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
+import { StyledLink } from "..";
 import { Button, FormContainer, SwitchContainer, Wrapper } from "./styles";
 
 export const Registration = () => {
@@ -7,12 +8,12 @@ export const Registration = () => {
     <Wrapper>
       <FormContainer>
         <SwitchContainer>
-          <Link to="sign-in">
+          <StyledLink to="sign-in">
             <Button>Sign In</Button>
-          </Link>
-          <Link to="sign-up">
+          </StyledLink>
+          <StyledLink to="sign-up">
             <Button>Sign Up</Button>
-          </Link>
+          </StyledLink>
         </SwitchContainer>
         <Outlet />
       </FormContainer>

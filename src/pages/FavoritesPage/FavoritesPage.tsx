@@ -17,7 +17,7 @@ export const FavoritesPage = () => {
         <TitlePage>Favorites</TitlePage>
       </TitleContainer>
       {favorites.length === 0 ? (
-        <EmptyFavorites>Nothing in favorites</EmptyFavorites>
+        <EmptyFavorites>Nothing in favorites!</EmptyFavorites>
       ) : (
         <FavoritesList />
       )}

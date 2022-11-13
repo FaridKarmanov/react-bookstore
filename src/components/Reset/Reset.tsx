@@ -1,7 +1,7 @@
 import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-import { Button, Form, Header, Input, Title } from "./styles";
+import { Button, Form, Header, Input, Text, Title } from "./styles";
 
 type FormValues = {
   email: string;
@@ -18,7 +18,9 @@ export const Reset = () => {
       <Header>Reset password</Header>
       <Title>Email</Title>
       <Input placeholder="Your email" {...register("email")} />
-      <Link to="/sign-in">Sign In</Link>
+      <Link to="/sign-in">
+        <Text>Sign In</Text>
+      </Link>
       <Button type="submit">Reset</Button>
     </Form>
   );

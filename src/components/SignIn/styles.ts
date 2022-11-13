@@ -6,16 +6,26 @@ export const Form = styled.form`
   flex-direction: column;
   max-width: 544px;
   width: 100%;
-  padding: 40px;
+  padding: 20px;
 `;
 
 export const Title = styled.h2`
   font-family: Helios;
-  font-size: 16px;
+  font-size: 24px;
   font-weight: 700;
   line-height: 32px;
   letter-spacing: 0em;
   text-align: left;
+`;
+
+export const Text = styled.p`
+  font-family: Helios;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 32px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: ${Color.Secondary};
 `;
 
 export const Input = styled.input`
@@ -32,4 +42,14 @@ export const Button = styled.button`
   color: ${Color.White};
   text-transform: uppercase;
   cursor: pointer;
+`;
+
+export const ErrorText = styled.p`
+  font-family: Helios;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 32px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: ${Color.Red};
 `;
