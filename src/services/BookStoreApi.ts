@@ -1,5 +1,5 @@
 import axios from "axios";
-import { IBookDetails, IBookResponse } from "../types";
+import { IBookDetails, IBookResponse, IBookResponseBySearch } from "../types";
 
 class BookStoreApi {
   private readonly BASE_URL = "https://api.itbook.store/1.0/";
@@ -15,10 +15,9 @@ class BookStoreApi {
   }
 
   public async getSearch(searchValue: string) {
-    const params = {
-      searchValue: searchValue,
-    };
-    const { data } = await this.API.get("search", { params });
+    const { data } = await this.API.get<IBookResponseBySearch>(
+      `search/${searchValue}`
+    );
 
     return data;
   }

@@ -1,4 +1,4 @@
-import { fetchBooks } from "./booksSlice";
+import { fetchBooks, setSearchValue, fetchSearchBooks } from "./booksSlice";
 import { fetchBook } from "./bookSlice";
 
 import {
@@ -30,4 +30,6 @@ export {
   fetchSignIn,
   updateUserPassword,
   resetUserPassword,
+  setSearchValue,
+  fetchSearchBooks,
 };

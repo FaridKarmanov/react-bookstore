@@ -1,8 +1,8 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { Title } from "./styles";
 
 interface IProps {
-  children: string;
+  children: ReactNode;
 }
 
 export const TitlePage = ({ children }: IProps) => {

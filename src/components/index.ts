@@ -16,6 +16,7 @@ import { BurgerMenu } from "./BurgerMenu/BurgerMenu";
 import { Reset } from "./Reset/Reset";
 import { StyledLink } from "./StyledLink/StyledLink";
 import { LoadingSpinner } from "./LoadingSpinner/LoadingSpinner";
+import { SearchList } from "./SearchList/SearchList";
 
 export {
   MainTemplate,
@@ -36,4 +37,5 @@ export {
   Reset,
   StyledLink,
   LoadingSpinner,
+  SearchList,
 };
