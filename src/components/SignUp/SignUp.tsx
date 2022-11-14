@@ -16,7 +16,7 @@ type FormValues = {
 
 export const SignUp = () => {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const { isLoading, error } = useAppSelector(getUser);
+  const { isLoading } = useAppSelector(getUser);
   const {
     register,
     handleSubmit,
@@ -31,8 +31,10 @@ export const SignUp = () => {
     if (password === confirmPassword) {
       dispatch(fetchSignUp({ email, password, name }))
         .unwrap()
-        .then(() => navigate("/"));
-      setErrorMessage(error);
+        .then(() => navigate("/"))
+        .catch((err) => {
+          setErrorMessage(err);
+        });
     }
   };
 
@@ -57,7 +59,13 @@ export const SignUp = () => {
       <Title>Password</Title>
       <Input
         placeholder="Your password"
-        {...register("password", { required: "Password is required" })}
+        {...register("password", {
+          required: "Password is required",
+          minLength: {
+            value: 6,
+            message: "Password must contain at least 6 characters",
+          },
+        })}
       />
       <ErrorText>{errors.password?.message}</ErrorText>
 

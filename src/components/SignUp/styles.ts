@@ -47,9 +47,10 @@ export const Input = styled.input`
 
 export const Button = styled.button`
   width: 100%;
-  padding: 16px 190px;
+  padding: 16px 0px;
   background: ${Color.Primary};
   color: ${Color.White};
+  text-align: center;
   text-transform: uppercase;
   cursor: pointer;
 `;

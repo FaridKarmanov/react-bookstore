@@ -1,8 +1,12 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import {
   createUserWithEmailAndPassword,
+  EmailAuthProvider,
+  reauthenticateWithCredential,
   sendEmailVerification,
+  sendPasswordResetEmail,
   signInWithEmailAndPassword,
+  updatePassword,
   User,
 } from "firebase/auth";
 import { auth } from "../../firebase";
@@ -76,6 +80,50 @@ export const fetchSignIn = createAsyncThunk<
   }
 );
 
+export const updateUserPassword = createAsyncThunk<
+  void,
+  {
+    password: string;
+    newPassword: string;
+  },
+  { rejectValue: string }
+>(
+  "user/updateUserPassword",
+  async ({ newPassword, password }, { rejectWithValue }) => {
+    const user = auth.currentUser as User;
+    const credential = EmailAuthProvider.credential(
+      user.email as string,
+      password
+    );
+
+    if (user)
+      try {
+        await reauthenticateWithCredential(user, credential);
+        await updatePassword(user, newPassword);
+      } catch (error) {
+        const firebaseError = error as { code: FirebaseErrorCode };
+
+        return rejectWithValue(getFirebaseError(firebaseError.code));
+      }
+  }
+);
+
+export const resetUserPassword = createAsyncThunk<
+  void,
+  {
+    email: string;
+  },
+  { rejectValue: string }
+>("user/resetUserPassword", async ({ email }, { rejectWithValue }) => {
+  try {
+    await sendPasswordResetEmail(auth, email);
+  } catch (error) {
+    const firebaseError = error as { code: FirebaseErrorCode };
+
+    return rejectWithValue(getFirebaseError(firebaseError.code));
+  }
+});
+
 const userSlice = createSlice({
   name: "user",
   initialState,
@@ -111,6 +159,34 @@ const userSlice = createSlice({
       state.name = payload.name;
     });
     builder.addCase(fetchSignIn.rejected, (state, { payload }) => {
+      if (payload) {
+        state.isLoading = false;
+        state.error = payload;
+      }
+    });
+    builder.addCase(updateUserPassword.pending, (state) => {
+      state.isLoading = true;
+      state.error = null;
+    });
+    builder.addCase(updateUserPassword.fulfilled, (state) => {
+      state.isLoading = false;
+      state.error = null;
+    });
+    builder.addCase(updateUserPassword.rejected, (state, { payload }) => {
+      if (payload) {
+        state.isLoading = false;
+        state.error = payload;
+      }
+    });
+    builder.addCase(resetUserPassword.pending, (state) => {
+      state.isLoading = true;
+      state.error = null;
+    });
+    builder.addCase(resetUserPassword.fulfilled, (state) => {
+      state.isLoading = false;
+      state.error = null;
+    });
+    builder.addCase(resetUserPassword.rejected, (state, { payload }) => {
       if (payload) {
         state.isLoading = false;
         state.error = payload;

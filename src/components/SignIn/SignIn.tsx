@@ -15,7 +15,7 @@ type FormValues = {
 
 export const SignIn = () => {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const { isLoading, error } = useAppSelector(getUser);
+  const { isLoading } = useAppSelector(getUser);
   const {
     register,
     handleSubmit,
@@ -28,8 +28,10 @@ export const SignIn = () => {
     setErrorMessage(null);
     dispatch(fetchSignIn({ email, password, name }))
       .unwrap()
-      .then(() => navigate("/"));
-    setErrorMessage(error);
+      .then(() => navigate("/"))
+      .catch((err) => {
+        setErrorMessage(err);
+      });
   };
 
   return (

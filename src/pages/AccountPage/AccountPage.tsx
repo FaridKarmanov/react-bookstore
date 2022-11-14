@@ -12,9 +12,12 @@ import {
   Input,
   ButtonSave,
   ButtonCancel,
+  ButtonContainer,
+  ErrorText,
 } from "./styles";
-import { TitlePage } from "../../components";
+import { LoadingSpinner, TitlePage } from "../../components";
 import { ArrowHomeIcon } from "../../assets";
+import { updateUserPassword } from "../../store/slices";
 
 type SettingValues = {
   name: string;
@@ -25,7 +28,7 @@ type SettingValues = {
 };
 
 export const AccountPage = () => {
-  const { email, name } = useAppSelector(getUser);
+  const { email, name, isLoading } = useAppSelector(getUser);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
@@ -35,6 +38,7 @@ export const AccountPage = () => {
     watch,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm<SettingValues>();
 
   const { newPassword, confirmPassword } = watch();
@@ -43,7 +47,20 @@ export const AccountPage = () => {
     newPassword,
     confirmPassword,
     password,
-  }) => {};
+  }) => {
+    setErrorMessage(null);
+    if (newPassword === confirmPassword) {
+      dispatch(updateUserPassword({ newPassword, password }))
+        .unwrap()
+        .catch((err) => {
+          setErrorMessage(err);
+        })
+        .finally(() => {
+          reset();
+        });
+    }
+  };
+
   return (
     <>
       <TitleContainer>
@@ -52,7 +69,7 @@ export const AccountPage = () => {
         </Link>
         <TitlePage>Your cart</TitlePage>
       </TitleContainer>
-      <Form>
+      <Form onSubmit={handleSubmit(onSubmit)}>
         <Container>
           <Title>Profile</Title>
           <SubTitle>Name</SubTitle>
@@ -63,16 +80,45 @@ export const AccountPage = () => {
         <Container>
           <Title>Password</Title>
           <SubTitle>Password</SubTitle>
-          <Input placeholder="Your password" />
+          <Input
+            placeholder="Your password"
+            {...register("password", { required: "Password is required" })}
+          />
+          <ErrorText>{errorMessage}</ErrorText>
+          <ErrorText>{errors.password?.message}</ErrorText>
 
           <SubTitle>New Password</SubTitle>
-          <Input placeholder="New password" />
+          <Input
+            placeholder="New password"
+            {...register("newPassword", {
+              required: "New password is required",
+              minLength: {
+                value: 6,
+                message: "Password must contain at least 6 characters",
+              },
+            })}
+          />
+          <ErrorText>{errors.newPassword?.message}</ErrorText>
 
           <SubTitle>Confirm new password</SubTitle>
-          <Input placeholder="Confirm new password" />
+          <Input
+            placeholder="Confirm new password"
+            {...register("confirmPassword", {
+              required: "Confirm new password",
+            })}
+          />
+          <ErrorText>{errors.confirmPassword?.message}</ErrorText>
+
+          {confirmPassword !== newPassword && (
+            <ErrorText>Password don't match</ErrorText>
+          )}
         </Container>
-        <ButtonSave type="submit">Save changes</ButtonSave>
-        <ButtonCancel onClick={() => navigate("/")}>Cancel</ButtonCancel>
+        <ButtonContainer>
+          <ButtonSave type="submit">
+            {isLoading ? <LoadingSpinner /> : "Save changes"}
+          </ButtonSave>
+          <ButtonCancel onClick={() => navigate("/")}>Cancel</ButtonCancel>
+        </ButtonContainer>
       </Form>
     </>
   );
