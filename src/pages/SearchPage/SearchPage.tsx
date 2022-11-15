@@ -1,17 +1,10 @@
-import { useEffect } from "react";
 import { SearchList, TitlePage } from "../../components";
-import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import { getBooks } from "../../store/selectors";
-import { fetchSearchBooks } from "../../store/slices";
+import { useAppSelector } from "../../store/hooks";
+import { getSearchBook } from "../../store/selectors";
 import { Wrapper } from "./styles";
 
 export const SearchPage = () => {
-  const { searchValue } = useAppSelector(getBooks);
-  const dispatch = useAppDispatch();
-
-  // useEffect(() => {
-  //   dispatch(fetchSearchBooks(searchValue));
-  // });
+  const { searchValue } = useAppSelector(getSearchBook);
 
   return (
     <Wrapper>

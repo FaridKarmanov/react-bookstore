@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { BurgerMenu } from "..";
 import {
@@ -11,11 +11,11 @@ import {
   NotEmptyCartIcon,
   NotEmptyFavoritesIcon,
 } from "../../assets";
-import { useInput, useWindowSize } from "../../hooks";
+import { useDebounce, useInput, useWindowSize } from "../../hooks";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import { getBooks, getCart, getFavorites } from "../../store/selectors";
+import { getCart, getFavorites } from "../../store/selectors";
 import { fetchSearchBooks, setSearchValue } from "../../store/slices";
-import { Search, UserIcons, Wrapper } from "./styles";
+import { Search, SearchResults, UserIcons, Wrapper } from "./styles";
 
 interface IProps {
   state: boolean;
@@ -25,17 +25,22 @@ interface IProps {
 export const SearchBar = ({ state, toggle }: IProps) => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const { searchValue } = useAppSelector(getBooks);
-
   const { width = 0 } = useWindowSize();
   const { onChange, value } = useInput();
+  const debounceValue = useDebounce(value, 1000);
+  const [isOpen, setIsOpen] = useState(false);
   const { favorites } = useAppSelector(getFavorites);
   const { cart } = useAppSelector(getCart);
 
   useEffect(() => {
-    dispatch(setSearchValue(value));
-    dispatch(fetchSearchBooks(value));
-  }, [value, dispatch]);
+    if (debounceValue) {
+      dispatch(fetchSearchBooks(debounceValue));
+      dispatch(setSearchValue(debounceValue));
+    } else {
+      dispatch(setSearchValue("js"));
+    }
+  }, [debounceValue, dispatch]);
+
   return (
     <Wrapper>
       <Link to="/">
@@ -44,13 +49,8 @@ export const SearchBar = ({ state, toggle }: IProps) => {
 
       {width >= 1260 ? (
         <>
-          <Search
-            placeholder="Search"
-            onChange={onChange}
-            // onClick={() => {
-            //   navigate("/search");
-            // }}
-          />
+          <Search placeholder="Search" onChange={onChange} />
+
           <UserIcons>
             <Link to="favorites">
               {favorites.length === 0 ? (

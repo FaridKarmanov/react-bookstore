@@ -1,5 +1,6 @@
-import { fetchBooks, setSearchValue, fetchSearchBooks } from "./booksSlice";
+import { fetchBooks } from "./booksSlice";
 import { fetchBook } from "./bookSlice";
+import { fetchSearchBooks, setSearchValue } from "./searchSlice";
 
 import {
   addToCart,

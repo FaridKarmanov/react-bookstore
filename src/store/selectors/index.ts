@@ -3,5 +3,6 @@ import { getBook } from "./bookSelector";
 import { getCart } from "./cartSelector";
 import { getFavorites } from "./favoritesSelector";
 import { getUser } from "./userSelector";
+import { getSearchBook } from "./searchSelector";
 
-export { getBooks, getBook, getCart, getFavorites, getUser };
+export { getBooks, getBook, getCart, getFavorites, getUser, getSearchBook };

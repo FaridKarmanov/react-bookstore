@@ -29,3 +29,12 @@ export const UserIcons = styled.div`
     max-width: 168px;
   }
 `;
+
+export const SearchResults = styled.div`
+  max-width: 543px;
+  width: 100%;
+  height: 557px;
+  margin: 0 auto;
+  margin-top: 90px;
+  background-color: ${Color.Primary};
+`;
