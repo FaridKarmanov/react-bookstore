@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { BurgerMenu } from "..";
 import {
@@ -14,8 +14,8 @@ import {
 import { useDebounce, useInput, useWindowSize } from "../../hooks";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { getCart, getFavorites } from "../../store/selectors";
-import { fetchSearchBooks, setSearchValue } from "../../store/slices";
-import { Search, SearchResults, UserIcons, Wrapper } from "./styles";
+import { setSearchValue } from "../../store/slices";
+import { Search, UserIcons, Wrapper } from "./styles";
 
 interface IProps {
   state: boolean;
@@ -28,16 +28,12 @@ export const SearchBar = ({ state, toggle }: IProps) => {
   const { width = 0 } = useWindowSize();
   const { onChange, value } = useInput();
   const debounceValue = useDebounce(value, 1000);
-  const [isOpen, setIsOpen] = useState(false);
   const { favorites } = useAppSelector(getFavorites);
   const { cart } = useAppSelector(getCart);
 
   useEffect(() => {
     if (debounceValue) {
-      dispatch(fetchSearchBooks(debounceValue));
       dispatch(setSearchValue(debounceValue));
-    } else {
-      dispatch(setSearchValue("js"));
     }
   }, [debounceValue, dispatch]);
 
@@ -49,7 +45,11 @@ export const SearchBar = ({ state, toggle }: IProps) => {
 
       {width >= 1260 ? (
         <>
-          <Search placeholder="Search" onChange={onChange} />
+          <Search
+            placeholder="Search"
+            onChange={onChange}
+            onClick={() => navigate("/search")}
+          />
 
           <UserIcons>
             <Link to="favorites">

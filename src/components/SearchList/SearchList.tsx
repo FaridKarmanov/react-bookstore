@@ -2,8 +2,8 @@ import { useEffect } from "react";
 import { BookListItem } from "..";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { getSearchBook } from "../../store/selectors";
-import { fetchSearchBooks } from "../../store/slices";
-import { List } from "./styles";
+import { fetchSearchBooks, setSearchValue } from "../../store/slices";
+import { EmptyList, List } from "./styles";
 
 export const SearchList = () => {
   const { booksSearch, searchValue } = useAppSelector(getSearchBook);
@@ -17,7 +17,7 @@ export const SearchList = () => {
   return (
     <>
       {booksSearch.length === 0 ? (
-        <div>Not found</div>
+        <EmptyList>Find some books</EmptyList>
       ) : (
         <List>
           {booksSearch.map((book) => {

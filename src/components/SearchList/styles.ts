@@ -16,3 +16,13 @@ export const List = styled.ul`
     grid-template-columns: repeat(3, 1fr);
   }
 `;
+
+export const EmptyList = styled.p`
+  margin: 120px auto;
+  font-family: Helios;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 32px;
+  letter-spacing: 0em;
+  text-align: left;
+`;
