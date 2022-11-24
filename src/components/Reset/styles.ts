@@ -4,7 +4,7 @@ import { Color } from "../../ui";
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
-  margin: 250px auto;
+  margin: 150px auto;
   max-width: 544px;
   width: 100%;
   padding: 20px;

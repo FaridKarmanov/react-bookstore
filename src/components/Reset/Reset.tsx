@@ -12,6 +12,7 @@ type FormValues = {
 };
 
 export const Reset = () => {
+  const [message, setMessage] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const { isLoading } = useAppSelector(getUser);
   const dispatch = useAppDispatch();
@@ -24,10 +25,10 @@ export const Reset = () => {
   } = useForm<FormValues>();
   const onSubmit: SubmitHandler<FormValues> = ({ email }) => {
     setErrorMessage(null);
+    setMessage(true);
     dispatch(resetUserPassword({ email }))
       .unwrap()
       .catch((err) => {
-        console.log(err);
         setErrorMessage(err);
       })
       .finally(() => {
@@ -38,6 +39,7 @@ export const Reset = () => {
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
       <Header>Reset password</Header>
+      {message && <Text>Check your email!</Text>}
       <Title>Email</Title>
       <Input
         placeholder="Your email"
