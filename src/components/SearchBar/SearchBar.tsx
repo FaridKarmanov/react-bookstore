@@ -73,9 +73,15 @@ export const SearchBar = ({ state, toggle }: IProps) => {
             <CartIcon onClick={() => toggle(false)} />
           </Link>
           {state ? (
-            <CloseBurgerIcon onClick={() => toggle(false)} />
+            <CloseBurgerIcon
+              style={{ cursor: "pointer" }}
+              onClick={() => toggle(false)}
+            />
           ) : (
-            <BurgerIcon onClick={() => toggle(true)} />
+            <BurgerIcon
+              style={{ cursor: "pointer" }}
+              onClick={() => toggle(true)}
+            />
           )}
         </UserIcons>
       )}
