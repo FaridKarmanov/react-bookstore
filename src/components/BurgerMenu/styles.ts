@@ -32,6 +32,8 @@ export const Container = styled.div`
 
 export const Search = styled.input`
   width: 100%;
+  margin-top: 40px;
+  margin-bottom: 100px;
   padding: 16px 20px;
 `;
 
