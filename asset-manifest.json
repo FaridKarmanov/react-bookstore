@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.js": "/react-bookstore/static/js/main.a3f28db4.js",
+    "static/media/logo.svg": "/react-bookstore/static/media/logo.4df062493d3c8a2d9a244c508c206884.svg",
+    "static/media/not-empty-favorites.svg": "/react-bookstore/static/media/not-empty-favorites.413165dbf373f59dc5657fa0614fdae3.svg",
+    "static/media/not-empty-cart.svg": "/react-bookstore/static/media/not-empty-cart.81070704633a5873708c17a095e42717.svg",
+    "static/media/arrow-left-icon.svg": "/react-bookstore/static/media/arrow-left-icon.cfb3190c5eda02964eb88c799f100638.svg",
+    "static/media/favorites-icon.svg": "/react-bookstore/static/media/favorites-icon.b87d6f9aa07a91db538db09b0a33d0c6.svg",
+    "static/media/heart-empty-icon.svg": "/react-bookstore/static/media/heart-empty-icon.b6d1f9615f29f9ee55b3f8ad3d483c40.svg",
+    "static/media/mobile-favorites-icon.svg": "/react-bookstore/static/media/mobile-favorites-icon.399cffb1ad48b0995b95fcb6404b485a.svg",
+    "static/media/heart-fill-icon.svg": "/react-bookstore/static/media/heart-fill-icon.22983587b5c27a758cbb91b1cdc3509a.svg",
+    "static/media/delete-icon.svg": "/react-bookstore/static/media/delete-icon.267a1bbd539bfe0caa7f9839991ee45a.svg",
+    "static/media/close-burger-icon.svg": "/react-bookstore/static/media/close-burger-icon.c6f54e4f7c649cee361d926a3ef1726a.svg",
+    "static/media/cart-icon.svg": "/react-bookstore/static/media/cart-icon.9b39632b8ee35ad594d5c70d298dc8d4.svg",
+    "static/media/plus-icon.svg": "/react-bookstore/static/media/plus-icon.d385a0c3febd044baa87f99e98aac55c.svg",
+    "static/media/user-icon.svg": "/react-bookstore/static/media/user-icon.6a2d36fc2d41c92c26230f37f805fad1.svg",
+    "static/media/burger-icon.svg": "/react-bookstore/static/media/burger-icon.cfd6774c4a21487fc1618790b8a3eb30.svg",
+    "index.html": "/react-bookstore/index.html",
+    "static/media/minus-icon.svg": "/react-bookstore/static/media/minus-icon.846fc4117edea0a6af47348a066b7bf1.svg",
+    "main.a3f28db4.js.map": "/react-bookstore/static/js/main.a3f28db4.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.a3f28db4.js"
+  ]
+}
