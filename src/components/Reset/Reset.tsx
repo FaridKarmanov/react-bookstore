@@ -39,7 +39,7 @@ export const Reset = () => {
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
       <Header>Reset password</Header>
-      {message && <Text>Check your email!</Text>}
+      {message ? <Text>Check your email!</Text> : <></>}
       <Title>Email</Title>
       <Input
         placeholder="Your email"
