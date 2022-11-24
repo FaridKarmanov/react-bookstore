@@ -1,5 +1,5 @@
 import ReactDOM from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import { App } from "./App";
 import { store } from "./store/store";
 import { GlobalStyles } from "./ui";
@@ -10,9 +10,9 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <Provider store={store}>
-    <BrowserRouter>
+    <HashRouter>
       <GlobalStyles />
       <App />
-    </BrowserRouter>
+    </HashRouter>
   </Provider>
 );

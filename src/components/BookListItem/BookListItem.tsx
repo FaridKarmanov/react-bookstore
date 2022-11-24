@@ -16,7 +16,7 @@ interface IProps {
 export const BookListItem = ({ book }: IProps) => {
   const { isbn13, title, subtitle, image, price } = book;
   return (
-    <Link to={`book/${isbn13}`}>
+    <Link to={`/book/${isbn13}`}>
       <Book>
         <WrapperImage>
           <BookImage src={image} />

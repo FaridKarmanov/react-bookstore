@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { BookListItem } from "..";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { getSearchBook } from "../../store/selectors";
-import { fetchSearchBooks, setSearchValue } from "../../store/slices";
+import { fetchSearchBooks } from "../../store/slices";
 import { EmptyList, List } from "./styles";
 
 export const SearchList = () => {
