@@ -32,9 +32,6 @@ export const BurgerMenu = ({ toggle }: IProps) => {
         <Link to="favorites" onClick={() => toggle(false)}>
           <Title>Favorites</Title>
         </Link>
-        <Link to="cart" onClick={() => toggle(false)}>
-          <Title>Cart</Title>
-        </Link>
         <Link to="account" onClick={() => toggle(false)}>
           <Title>Account</Title>
         </Link>
